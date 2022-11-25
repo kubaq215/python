@@ -1,4 +1,4 @@
-from math import hypot, atan, sin, cos, sqrt
+from math import hypot, atan, sin, cos, sqrt, floor
 
 class Zespolona:
     def __init__(self, r, i):
@@ -46,7 +46,7 @@ class Zespolona:
     def __rsub__(self, other):
         if isinstance(other, (int, float)):
             other = Zespolona(other, 0)
-        return self.__sub__(other)
+        return other.__sub__(self)
 
     def __eq__(self, other):
         return self.r == other.r and self.i == other.i
@@ -60,7 +60,7 @@ class Zespolona:
         my_sin = sin(my_arg)
         my_cos = cos(my_arg)
         my_pow = my_abs ** other
-        return Zespolona(int(my_pow * my_cos), int(my_pow * my_sin))
+        return Zespolona(round(my_pow * my_cos), round(my_pow * my_sin))
 
 
 def main():
